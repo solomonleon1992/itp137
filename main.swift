@@ -1,25 +1,12 @@
-import Foundation
-import Glibc
+var num = 0
+num = Int(readLine()!)!
+// if num % 2 == 0 {
+//   print(String(num) + " is Even.")
+// } else {
+//   print(String(num) + " is Odd.")
+// }
 
-var temp = 0.0
-temp = Double(readLine()!)!
-print(temp)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var courseCode = true
-// print(type(of: courseCode))
-// //print(courseCode)
+while num > 0 {
+  print(num)
+  num /= 2
+}
