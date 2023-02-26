@@ -1,4 +1,5 @@
 import Foundation
+import Glibc
 
 func solveQuadraticEquation(a: Double, b: Double, c: Double) -> (Double, Double)? {
     let delta = pow(b, 2) - 4 * a * c
