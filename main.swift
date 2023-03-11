@@ -1,39 +1,64 @@
-import Foundation
-import Glibc
+print("Please enter a string") 
 
 
+  if let input = readLine() {
 
-// var courseCode = true
-// print(type(of:courseCode))
-// print(courseCode)
+     if let charValue = mostFrequentCharacter(input){
+  
+      
+      print("The most frequent character is " +  String(charValue))
 
-// var temp = 0
-// temp = Int (readLine()!)!
-// print(temp)
+    
+    }
 
-// print("Enter first number")
-// var numOne = Int (readLine()!)!
+  }
+else {
 
-// print("Enter second number")
-// var numTwo = Int (readLine()!)!
-
-// var sum = numOne + numTwo
-
-// print ("Your total is ",sum)
-
-var num: Int
-num = Int(readLine()!)!
-
-// if num % 2 == 0{
-//   print(String(num) + " is Even.")
-// }
-// else{
-//   print(String(num) + "is Odd.")
-// }
-
-while num < 10{
-  print (num)
-  num += 1
+  print ("error try again")
 }
 
 
+
+
+
+
+
+
+
+func mostFrequentCharacter(_ input: String) -> Character? { 
+
+
+  var maxCount = 0
+  
+  var maxChar: Character?
+
+  
+
+  for char in input {
+
+    print("This is the char \(char)")
+    var count = 0 
+
+    for otherChar in input {
+        print("This is the otherChar \(otherChar)")
+        print("This is the count before line 49 \(count)")
+        if otherChar == char {
+
+      
+        count+=1
+        print("This is the count before line 51 \(count)")
+      }  
+    }
+    if count > maxCount {
+
+      maxChar = char
+      maxCount = count
+    }
+
+  
+  
+  }
+
+return maxChar
+  
+} 
