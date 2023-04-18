@@ -1,11 +1,90 @@
-var wholeNumber = 13
+var englishText = "this is a secret message"
+var secretMessage = ".... --- .-- -.. -.--   .--. .- .-. - -. . .-." 
 
-// Write your code below 
-switch wholeNumber {
-  case let x where x % 2 == 0:
-    print("Composite")
-  case let x where x % 3 == 0:
-    print("Composite")
-  default:
-    print("Prime")
+var lettersToMorse: [String: String] = [
+  "a": ".-",
+  "b": "-...",
+  "c": "-.-.",
+  "d": "-..",
+  "e": ".",
+  "f": "..-.",
+  "g": "--.",
+  "h": "....",
+  "i": "..",
+  "j": ".---",
+  "k": "-.-",
+  "l": ".-..",
+  "m": "--",
+  "n": "-.",
+  "o": "---",
+  "p": ".--.",
+  "q": "--.-",
+  "r": ".-.",
+  "s": "...",
+  "t": "-",
+  "u": "..-",
+  "v": "...-",
+  "w": ".--",
+  "x": "-..-",
+  "y": "-.--",
+  "z": "--..",
+  ".": ".-.-.-",
+  "!": "-.-.--",
+  "?": "..--..",
+  ",": "--..--"
+]
+
+var morseText = ""
+
+for element in englishText {
+  if let morseChar = lettersToMorse["\(element)"]{
+    morseText += morseChar + " "
+  }
+  else{
+    morseText+="  "
+  } 
 }
+
+print (morseText)
+
+var decodedMessage = ""
+var currMorse = ""
+var morseCodeArray = [String]()
+
+for char in secretMessage {
+  if char != " " {
+    currMorse.append(char)
+  } 
+  else {
+    switch currMorse {
+      case "": 
+        currMorse += " "
+      case " ":
+        morseCodeArray.append(" ")
+        currMorse = ""
+      default: 
+        morseCodeArray.append(currMorse)
+        currMorse = ""
+    }
+    
+  }
+}
+
+morseCodeArray.append(currMorse)
+
+var morseToLetter: [String: String] = [:]
+
+for (letter,morseChar) in lettersToMorse{
+  morseToLetter[morseChar]=letter
+}
+
+for morseValue in morseCodeArray {
+  if let letterChar = morseToLetter[morseValue]{
+    decodedMessage += letterChar
+  }
+  else {
+    decodedMessage += " "
+  }
+}
+
+print (decodedMessage)
